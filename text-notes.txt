@@ -1,0 +1,6 @@
+--- Making Connection Between Node.js And Database.
+-- First: We make an ordinary node application.
+-- Then we make .env file for secured data and put it in .gitignore.
+-- Install body-parser: npm i body-parser.
+-- Install postgres as a package: npm i pg.
+-- Install tsc watch: npm i tsc-watch --save-dev&&npm install -g typescript tsc-watch.
