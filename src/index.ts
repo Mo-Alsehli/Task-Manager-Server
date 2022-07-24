@@ -3,11 +3,14 @@ import bodyParser from "body-parser";
 import connectDB from "../db/connect";
 import dotenv from "dotenv";
 import tasks_route from "./handlers/tasks";
+import notFound from "./middleware/not-found";
+import errorHandler from "./middleware/error-handler";
 
 dotenv.config();
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.static("./public"));
 app.use(bodyParser.json());
 
 app.get("/", function (req: Request, res: Response) {
@@ -15,6 +18,9 @@ app.get("/", function (req: Request, res: Response) {
 });
 
 tasks_route(app);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const start = async () => {
   try {
